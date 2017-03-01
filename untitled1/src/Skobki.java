@@ -4,7 +4,7 @@ import java.util.Scanner;
  * Created by User on 01.03.2017.
  */
 public class Skobki {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyException {
         String s;
         char c;
         Stack stack=new Stack();
@@ -15,37 +15,19 @@ public class Skobki {
             if(c=='('||c=='['||c=='{'||c=='<'){
                 stack.push(c);
             }
-            else {try {
-                switch (c){
-                    case '"':
-                        if(c==stack.look()){
-                            stack.pop();
-                        }
-                        else stack.push(c);
-                        break;
-                    case ')':
-                        if(stack.pop()!='(') {
-                            throw new Exception();
-                        }
-                        break;
-                    case '>':
-                        if(stack.pop()!='<') {
-                            throw new Exception();
-                        }
-                        break;
-                    case '}':
-                        if(stack.pop()!='{') {
-                            throw new Exception();
-                        }
-                        break;
-                    case ']':
-                        if(stack.pop()!='[') {
-                            throw new Exception();
-                        }
-                        break;
-                }} catch (Exception e) {
-                e.printStackTrace();
-            }
+            else {
+                if(c==')'){
+                    if(c!=(char)stack.look()+1){
+                        throw new MyException();
+                    }
+                    stack.pop();
+                }
+                else {
+                    if(c!=(char)stack.look()+2){
+                        throw new MyException();
+                    }
+                    stack.pop();
+                }
             }
         }
     }
