@@ -1,9 +1,9 @@
 /**
  * Created by User on 27.02.2017.
  */
-public class Dequeue {
-    Node tail;
-    Node head;
+public class Dequeue<T> {
+    Node<T> tail;
+    Node<T> head;
     long size;
 
     public Dequeue() {
@@ -11,8 +11,8 @@ public class Dequeue {
         head=null;
         size=0;
     }
-    public void pushTop(Object val){
-        Node n=new Node(val);
+    public void pushTop(T val){
+        Node<T> n=new Node(val);
         if(size==0){
             tail=n;
             head=n;
@@ -28,8 +28,8 @@ public class Dequeue {
         }
         size++;
     }
-    public void pushBottom(Object val){
-        Node n=new Node(val);
+    public void pushBottom(T val){
+        Node<T> n=new Node(val);
         if(size==0){
             tail=n;
             head=n;
@@ -45,21 +45,21 @@ public class Dequeue {
         }
         size++;
     }
-    public Object popTop(){
-        Object val=head.getVal();
+    public T popTop(){
+        T val=head.getVal();
         head=head.getPrev();
         head.setNext(null);
         size--;
         return val;
     }
-    public Object popBottom(){
-        Object val=tail.getVal();
+    public T popBottom(){
+        T val=tail.getVal();
         tail=tail.getNext();
         tail.setPrev(null);
         size--;
         return val;
     }
-    public Object lookTop(){
+    public T lookTop(){
         return head.getVal();
     }
 
@@ -67,7 +67,7 @@ public class Dequeue {
         return size;
     }
 
-    public Object lookBottom(){
+    public T lookBottom(){
         return tail.getVal();
 
     }

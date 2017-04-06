@@ -1,20 +1,20 @@
 /**
  * Created by User on 27.02.2017.
  */
-public class Stack {
-    Dequeue data;
+public class Stack<T> {
+    Dequeue<T> data;
 
     public Stack() {
-        data=new Dequeue();
+        data=new Dequeue<T>();
     }
 
-    public void push(Object val){
+    public void push(T val){
         data.pushTop(val);
     }
-    public Object pop(){
+    public T pop(){
         return data.popTop();
     }
-    public Object look(){
+    public T look(){
         return data.lookTop();
     }
     public long getSize(){

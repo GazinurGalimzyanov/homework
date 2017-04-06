@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.IdentityHashMap;
 
 /**
  * Created by User on 01.03.2017.
@@ -28,9 +29,7 @@ public class Graph {
         boolean[] mark = new boolean[lenght];
         Arrays.fill(mark, false);
         int[] trace = new int[lenght];
-        for (int i : edges[0]) {
-            DFS(edges[0][i], 0, mark, trace);
-        }
+            DFSByStack( mark, trace);
         for (int v = lenght - 1; v != 0; v = trace[v]) {
             s.push(v);
         }
@@ -48,6 +47,20 @@ public class Graph {
         }
         for (int i : edges[v]) {
             DFS(edges[v][i], v, mark, trace);
+        }
+    }
+    void DFSByStack( boolean[] mark, int[] trace){
+        Stack<Integer> stack=new Stack<Integer>();
+        stack.push(0);
+        while (stack.getSize()!=0){
+            for(int i=0;i<edges[stack.look()].length;i++){
+                if(!mark[edges[stack.look()][i]]){
+                    mark[edges[stack.look()][i]]=true;
+                    trace[edges[stack.look()][i]]=stack.look();
+                    stack.push(edges[stack.look()][i]);
+                }
+            }
+            stack.pop();
         }
     }
 }

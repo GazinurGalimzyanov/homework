@@ -3,12 +3,12 @@
 /**
  * Created by User on 27.02.2017.
  */
-public class Node {
-    private Node next;
-    private Node prev;
-    private Object val;
+public class Node<T> {
+    private Node<T> next;
+    private Node<T> prev;
+    private T val;
 
-    public Node(Object val) {
+    public Node(T val) {
         this.val = val;
     }
 
@@ -20,7 +20,7 @@ public class Node {
         this.prev = prev;
     }
 
-    public void setVal(Object val) {
+    public void setVal(T val) {
         this.val = val;
     }
 
@@ -33,7 +33,7 @@ public class Node {
         return prev;
     }
 
-    public Object getVal() {
+    public T    getVal() {
         return val;
     }
 }

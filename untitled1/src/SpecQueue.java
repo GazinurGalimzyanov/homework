@@ -4,7 +4,6 @@
 public class SpecQueue {
     SpecStack a;
     SpecStack b;
-    boolean s;
 
     public SpecQueue() {
         a=new SpecStack();
@@ -12,23 +11,20 @@ public class SpecQueue {
     }
     public void push(int val){
         a.push(val);
-        s=true;
     }
     public int pop(){
+        if(b.getSize()==0){
     while (a.getSize()>0){
-        b.push(a.pop());}
-        s=false;
+        b.push(a.pop());}}
         return b.pop();
     }
     public int look(){
+        if(b.getSize()==0){
         while (a.getSize()>0){
-            b.push(a.pop());}
+            b.push(a.pop());}}
         return b.look();
     }
     public int min(){
-        if (s){
-            return a.min();
-        }
-        return b.min();
+        return Math.min(a.min(),b.min());
     }
 }
