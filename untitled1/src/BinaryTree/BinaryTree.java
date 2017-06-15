@@ -4,7 +4,7 @@ package BinaryTree;
  * Created by User on 06.04.2017.
  */
 public class BinaryTree<K extends Comparable,V> {
-    TreeNode<K,V> root;
+    public TreeNode<K,V> root;
     public V put(K key, V value){
         TreeNode<K,V> node = new TreeNode<>(key,value);
         if (root==null){
